@@ -4,7 +4,11 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>AUTOMATED CV MAKER</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js" integrity="sha512-gYUM+7JjtBqPPGOgwgOZ+NwjGl+11/EP124oB+ihjlBpLgP5LTh7R/Iwcdy//cgH+QzrjspBiJI5iUegTNww3w==" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js" integrity="sha512-vv3EN6dNaQeEWDcxrKPFYSFba/kgm//IUnvLPMPadaUf5+ylZyx4cKxuc4HdBf0PPAlM7560DV63ZcolRJFPqA==" crossorigin="anonymous"></script>	
+	
 	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+	<script type="text/javascript" src="index.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -45,7 +49,7 @@
 				<br>
 				
 				
-				<ol><a href="SIX.HTML" target="_self">SKILLS&nbsp;AND&nbsp;CERTIFICATE</a></ol>
+				<ol><a href="SIX.HTML" target="_self">SKILLS</a></ol>
 				<br>
 				<br>
 				
@@ -57,18 +61,18 @@
 		<div class="form_3">
 
 		    <h2>-EDUCATION-</h2>
-		    <form action="process.php" method="GET">
+		    <form action="SIX.HTML" onsubmit="setEducation()">
 			<div class="form_2">
 		    <br>
 		    
 		    <li>
 		    <div>
-			    <label>&nbsp;Name of institution</label><br>
+			    <label>&nbsp;Name of institution/College</label><br>
 			    <br>
 			    
 			    
 
-			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="Name of institution" placeholder="Name of institution" max="100">
+			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="collegeName" placeholder="Name of institution" max="50" required>
 		    </div>
 		    <br>
 		   
@@ -76,20 +80,20 @@
 
 		    <div>
 			    <label>&nbsp;degree&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-			    <input type="text" name="Degree" placeholder="degree" max="50">
+			    <input type="text" name="degree" placeholder="degree" max="20" required>
 		    </div>
 		    <br>
 		   
 		    
 		    
 		    <div>
-			    <label>&nbsp;passing year&nbsp;&nbsp;</label>
-			    <input type="text" name="passing-year" placeholder="Passing year" max="50">
+			    <label>&nbsp;passing year(Format:20XX)&nbsp;&nbsp;</label>
+			    <input type="number" name="passingYearCollege" placeholder="Passing year" required>
 		    </div>
 		    <br>
 		    <div>
 			    <label>&nbsp;Marks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-			    <input type="text" name="marks" placeholder="marks" max="50">
+			    <input type="number" name="marksCollege" placeholder="marks" required>
 		    </div>
 		    <br>
 		    <br>
@@ -104,7 +108,7 @@
 			    
 			    
 
-			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="junior college" placeholder="junior college" max="100">
+			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="juniorCollegeName" placeholder="junior college" max="50" required>
 		    </div>
 		    <br>
 		   
@@ -112,20 +116,20 @@
 
 		    <div>
 			    <label>&nbsp;Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-			    <input type="text" name="filed" placeholder="field" max="50">
+			    <input type="text" name="field" placeholder="field" max="20" required>
 		    </div>
 		    <br>
 		   
 		    
 		    
 		    <div>
-			    <label>&nbsp;passing year&nbsp;&nbsp;</label>
-			    <input type="text" name="passing-year" placeholder="Passing year" max="50">
+			    <label>&nbsp;passing year(Format:20XX)&nbsp;&nbsp;</label>
+			    <input type="number" name="passingYearJrCollege" placeholder="Passing year" required>
 		    </div>
 		    <br>
 		    <div>
 			    <label>&nbsp;Marks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-			    <input type="text" name="marks" placeholder="marks" max="50">
+			    <input type="number" name="marksJrCollege" placeholder="marks" required>
 		    </div>
 		    <br>
 		    <br>
@@ -139,7 +143,7 @@
 			    
 			    
 
-			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="Name of school" placeholder="Name of school" max="100">
+			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="schoolName" placeholder="Name of school" max="50" required>
 		    </div>
 		    <br>
 		   
@@ -147,24 +151,25 @@
 
 		    <div>
 			    <label>&nbsp;BOARD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-			    <input type="text" name="board" placeholder="board" max="50">
+			    <input type="text" name="board" placeholder="board" max="20" required>
 		    </div>
 		    <br>
 		   
 		    
 		    
 		    <div>
-			    <label>&nbsp;passing year&nbsp;&nbsp;</label>
-			    <input type="text" name="passing-year" placeholder="Passing year" max="50">
+			    <label>&nbsp;passing year(Format:20XX)&nbsp;&nbsp;</label>
+			    <input type="number" name="passingYearSchool" placeholder="Passing year" required>
 		    </div>
 		    <br>
 		    <div>
 			    <label>&nbsp;Marks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-			    <input type="text" name="marks" placeholder="marks" max="50">
+			    <input type="text" name="marksSchool" placeholder="marks" required>
 		    </div>
 		    
 
 		    </li>
+		    <input type="submit" name="submit">
 		    <br>
 		    <br>
 		    <br>
