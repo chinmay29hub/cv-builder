@@ -1,6 +1,6 @@
 # cv-builder
 ###   https://chinmay29hub.github.io/cv-builder/html%2022@1/index.html
-### hello message alert should not appear on every page 
+
 
 
 
